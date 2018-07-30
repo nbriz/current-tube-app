@@ -1,0 +1,15 @@
+{
+  "name": "current-tube-app",
+  "version": "1.0.0",
+  "description": "gallery installation version of http://current.tube",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . dev"
+  },
+  "author": "Nick Briz <nickbriz@gmail.com> (http://nickbriz.com)",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^1.7.5"
+  }
+}

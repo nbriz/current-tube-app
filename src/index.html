@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> project </title>
+        <style media="screen">
+            html, body { margin:0; padding:0; }
+
+            #yt-frame {
+                width: 640px; padding: 25px;
+                position: absolute; top: 50px; z-index: 20;
+                background: rgb(255, 255, 255);
+                font-family: Roboto, Arial, sans-serif;
+                display: none;
+            }
+
+            #blocker1 {
+                position: absolute;
+                width: 84px; height: 36px;
+                top: 349px; left: 581px;
+                /*background: rgba(255,0,0,0.5);*/
+            }
+            #blocker2 {
+                position: absolute;
+                width: 224px; height: 32px;
+                top: 176px; left: 231px;
+                /*background: rgba(255,0,0,0.5);*/
+            }
+
+            #yt-frame h1 {
+                width:100%;
+                color: rgb(17, 17, 17);
+                font-size: 18px; font-weight: 400; line-height: 24px;
+            }
+
+            #stats { display: flex; justify-content: space-between; }
+
+                #views {
+                    color: rgba(17, 17, 17, 0.6);
+                    font-size: 16px; font-weight: 400; line-height: 20px;
+                }
+
+                svg {
+                    height:20px; display: inline-block;
+                    color:rgb(144, 144, 144); fill:rgb(144, 144, 144);
+                }
+
+                #ratio {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+                #ratio span {
+                    color: rgb(144, 144, 144);
+                    font-size: 13px; font-weight: 500; letter-spacing: 0px;
+                    margin: 0 20px 0 5px;
+                }
+
+            #attribution {
+                border-top: 1px solid #eeeeee;
+                padding-top: 12px; margin-top: 12px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+                #channel {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+
+                    #avatar {
+                        background: #e3e3e3; border-radius: 24px;
+                        width: 48px; height: 48px; margin-right: 15px;
+                        background-size:cover
+                    }
+
+                    #username {
+                        color: rgb(10, 10, 10);
+                        font-size: 14px; font-weight: 500; line-height: 16px;
+                    }
+
+                    #date {
+                        color: rgba(17, 17, 17, 0.6);
+                        font-size: 13px; font-weight: 400; line-height: 18px;
+                    }
+
+                #subs {
+                    background-color: #f00; color:#fff; font-size: 14px;
+                    font-weight: bold; justify-content: center;
+                    letter-spacing: 0px; line-height: 16px;
+                    border-radius: 2px; padding: 10px 16px;
+                }
+
+
+        </style>
+    </head>
+    <body>
+
+        <section id="yt-frame">
+            <div id="yt-player-div"></div>
+            <div id="blocker1"></div>
+            <div id="blocker2"></div>
+            <h1>...</h1>
+            <div id="stats">
+                <span id="views"></span>
+                <span id="ratio">
+                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                        <g><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" class="style-scope yt-icon"></path></g>
+                    </svg>
+                    <span id="likes">#</span>
+                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                        <g><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" class="style-scope yt-icon"></path></g>
+                    </svg>
+                    <span id="dislikes">#</span>
+                </span>
+            </div>
+            <div id="attribution">
+                <div id="channel">
+                    <div id="avatar"></div>
+                    <div>
+                        <div id="username">...</div>
+                        <div id="date">...</div>
+                    </div>
+                </div>
+                <div id="subs">SUBSCRIBE 0</div>
+            </div>
+        </section>
+
+        <script src="js/libs/tween.min.js"></script>
+        <script src="js/libs/three.min.js"></script>
+        <script src="js/libs/OrbitControls.js"></script>
+        <script src="js/ThreeWorld.js"></script>
+        <script src="js/SkyCanvasTexture.js"></script>
+        <script src="js/BottleOcean.js"></script>
+        <script src="js/YTVidGUI.js"></script>
+        <script src="js/YTSearch.js"></script>
+        <script src="credz.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

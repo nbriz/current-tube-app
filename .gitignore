@@ -1,0 +1,3 @@
+node_modules/
+playlistDB/*.json
+credz.js
