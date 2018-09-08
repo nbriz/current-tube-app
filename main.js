@@ -67,3 +67,15 @@ ipcMain.on('vid-change',(event,arg)=>{
         pl[dstr][arg.video.id].events.push(arg.change)
     }
 })
+
+console.log(`
+    ==============================================
+    ================== controls ==================
+    ==============================================
+    ctrl + b: begin raining bottles
+    ctrl + f: toggle fullscreen (requires refresh)
+    ctrl + d: open dev console
+    ctrl + r: refresh app
+    ctrl + s: save playlist
+    ctrl + q: quit app (the proper way)
+`)

@@ -1,12 +1,8 @@
 const { ipcRenderer } = require('electron')
 
 const sky = new SkyCanvasTexture()
-
-// TODO :: look into search token for more results
-
 const yts = new YTSearch(gapiKey)
 const gui = new YTVidGUI(gapiKey,ipcRenderer)
-
 
 let ocean
 
@@ -32,21 +28,26 @@ const world = new ThreeWorld({
     setup:function(scene,camera){
         ocean = new BottleOcean(scene)
         camera.lookAt(new THREE.Vector3(0,0,-ocean.mesh.userData.length/2))
-        yts.searchLatest((res)=>{
-            console.log(`${res.items.length} vids received`)
-            console.log(res)
-            ocean.createVideoBottles(res)
-        })
     },
     draw:function(){
         ocean.update()
     }
 })
 
+function beginRainingBottles(){
+    yts.searchLatest((res)=>{
+        console.log(`${res.items.length} vids received`)
+        console.log(res)
+        ocean.createVideoBottles(res)
+    })
+    setInterval(beginRainingBottles,60*1000)
+}
+
 
 document.addEventListener('keypress',(e)=>{
     // console.log(e)
-    if(e.ctrlKey && e.key=="d")
+    if(e.ctrlKey && e.key=="b") beginRainingBottles()
+    else if(e.ctrlKey && e.key=="d")
         ipcRenderer.send('key-cmd','open-dev')
     else if(e.ctrlKey && e.key=="f")
         ipcRenderer.send('key-cmd','toggle-fullscreen')
@@ -57,3 +58,15 @@ document.addEventListener('keypress',(e)=>{
     else if(e.ctrlKey && e.key=="q")
         ipcRenderer.send('key-cmd','quit-app')
 })
+
+console.log(`
+    ==============================================
+    ================== controls ==================
+    ==============================================
+    ctrl + b: begin raining bottles
+    ctrl + f: toggle fullscreen (requires refresh)
+    ctrl + d: open dev console
+    ctrl + r: refresh app
+    ctrl + s: save playlist
+    ctrl + q: quit app (the proper way)
+`)
