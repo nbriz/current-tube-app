@@ -140,16 +140,13 @@ class YTVidGUI {
     clickVid(vid){
         if(vid.title){
             this.vnfo = vid
-            let chSnippet = `https://www.googleapis.com/youtube/v3/channels?id=${vid.chid}&key=${this.key}&part=snippet`
+            let part = 'snippet,statistics'
+            let chSnippet = `https://www.googleapis.com/youtube/v3/channels?id=${vid.chid}&key=${this.key}&part=${part}`
             fetch(chSnippet).then(res=>res.json()).then(data=>{
                 let img = data.items[0].snippet.thumbnails.default.url
                 this.frame.querySelector('#avatar')
                     .style.backgroundImage = `url(${img})`
                 this.vnfo.channelThumbnail = img
-            }).catch(err=>console.warn(err))
-
-            let chStats = `https://www.googleapis.com/youtube/v3/channels?id=${vid.chid}&key=${this.key}&part=statistics`
-            fetch(chStats).then(res=>res.json()).then(data=>{
                 let subs = data.items[0].statistics.subscriberCount
                 this.frame.querySelector('#subs')
                     .textContent = `SUBSCRIBE ${this._count(subs,true)}`
