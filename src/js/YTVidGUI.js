@@ -77,13 +77,16 @@ class YTVidGUI {
 
     _count(num,abbr){
         if(abbr){
+            if(!num) return 0
             let suffixes = ["", "K", "M", "B","T"]
-            let suffixNum = Math.floor((""+num).length/3)
+            let suffixNum, l = (""+num).length
+            if( l > 0 && l <= 3 ) suffixNum = 0
+            else if( l > 3 && l <= 6 ) suffixNum = 1
+            else if( l > 6 && l <= 9 ) suffixNum = 2
+            else if( l > 9 && l <= 12 ) suffixNum = 3
+            else if( l > 12 && l <= 15 ) suffixNum = 4
             let sn = (suffixNum != 0) ? (num / Math.pow(1000,suffixNum)) : num
             let shortValue = Math.round(parseFloat(sn)*10)/10
-            if (shortValue % 1 != 0) {
-                let shortNum = shortValue.toFixed(1)
-            }
             return shortValue+suffixes[suffixNum]
         } else {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
