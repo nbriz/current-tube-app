@@ -36,8 +36,10 @@ class BottleOcean {
 
     _initBottle(vid){
         // let mesh = new THREE.Object3D() // raycaster won't see this...
-        let geometry = new THREE.CubeGeometry(200, 650, 200)
+        let geometry = new THREE.CubeGeometry(200, 650, 200) //...HACK...
         let mesh = new THREE.Mesh(geometry, {}) // ...gotta do this instead
+        // alternatively i can pass "true" in recursive param for raycaster...
+        // ...but then would see individual bottle pieces? 
 
         let bottle_material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
